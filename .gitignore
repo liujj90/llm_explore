@@ -1,0 +1,11 @@
+constants.py
+.chroma/*
+alpaca/*
+data/*
+db/*
+__pycache__/*
+
+*.pyc
+*.pyo
+*.json
+*.log

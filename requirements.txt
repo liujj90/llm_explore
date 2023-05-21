@@ -1,0 +1,11 @@
+langchain
+openai
+chromadb
+tiktoken
+faiss-cpu
+unstructured
+duckduckgo-search 
+transformers
+accelerate 
+einops 
+# xformers
