@@ -21,7 +21,7 @@ from langchain.chains import RetrievalQA
 os.environ['openai_api_key'] = keys['openai']
 
 # constants
-OPENAI_MODEL =   "text-ada-001" # "gpt-3.5-turbo" 
+OPENAI_MODEL =  "gpt-3.5-turbo" # "text-ada-001" #  
 # initialize openai model 
 llm = OpenAI(model_name=OPENAI_MODEL)  
 
@@ -35,7 +35,8 @@ class QApipeline():
         self.index = None
         self.qa = None
         self.persist = persist
-        self.db_path = f'db/{filename}/'
+        dbpath = filename.split('\\')[-1]
+        self.db_path = f'db/{dbpath}/'
         if not os.path.exists(self.db_path):
             os.makedirs(self.db_path)
             # should extend this to load db if exists

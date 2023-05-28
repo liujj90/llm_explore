@@ -9,3 +9,6 @@ transformers
 accelerate 
 einops 
 # xformers
+gradio
+flask
+fastapi
