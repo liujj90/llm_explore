@@ -17,3 +17,7 @@ keys = {
 ### TODO
 - [ ] setup colab notebook with custom resources
 - [ ] Host pdf application 
+- [ ] Setup langchain with alternative models: 
+  - [ ] LLAMA_7b
+  - [ ] Alpaca
+  - [ ] MTP_7b
