@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Function to handle file upload
+            $('#uploadForm').submit(function (event) {
+                event.preventDefault();
+                var formData = new FormData(this);
+                $.ajax({
+                    type: 'POST',
+                    url: '/upload',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        appendResult(response.result);
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+            });
+
+            // Function to handle user input
+            $('#userInputForm').submit(function (event) {
+                event.preventDefault();
+                var userInput = $('#input_text').val();
+                $.ajax({
+                    type: 'POST',
+                    url: '/user_input',
+                    data: { input_text: userInput },
+                    success: function (response) {
+                        appendResult(response.result);
+                        $('#input_text').val('');
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+            });
+
+            // Function to append the result to the page
+            function appendResult(result) {
+                var resultElement = document.createElement('p');
+                resultElement.innerHTML = result;
+                document.getElementById('results').appendChild(resultElement);
+            }
+        });
+    </script>
+</head>
+<body>
+    <h1>File Processing Result</h1>
+    <div id="results">
+        {% for result in results %}
+            <p>{{ result }}</p>
+        {% endfor %}
+    </div>
+
+    <h2>Enter your own text</h2>
+    <form id="userInputForm">
+        <textarea name="input_text" id="input_text" rows="4" cols="50"></textarea>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
