@@ -12,3 +12,4 @@ einops
 gradio
 flask
 fastapi
+datasets
